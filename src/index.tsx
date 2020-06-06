@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import history from './history'
+import GlobalStyles from './utils/GlobalStyles'
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyles></GlobalStyles>
     <App history={history} />
   </React.StrictMode>,
   document.getElementById('root')

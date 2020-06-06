@@ -1,5 +1,5 @@
-import React from 'react';
-import { Global, css } from '@emotion/core';
+import React from 'react'
+import {Global, css} from '@emotion/core'
 
 const GlobalStyles = () => {
   const globalStyles = css`
@@ -120,9 +120,9 @@ const GlobalStyles = () => {
     ul {
       list-style: none;
     }
-  `;
+  `
 
-  return <Global styles={globalStyles} />;
-};
+  return <Global styles={globalStyles} />
+}
 
-export default GlobalStyles;
+export default GlobalStyles

@@ -2,11 +2,13 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 import ImageField from './components/ImageField'
+import BookInformation from './components/BookInformation'
 
 const ProductPageLayout = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   height: '100%',
+  marginTop: '60px',
 })
 
 const LeftPageLayout = styled('div')({
@@ -28,7 +30,18 @@ const Product = (): JSX.Element => (
     <LeftPageLayout>
       <ImageField></ImageField>
     </LeftPageLayout>
-    <RightPageLayout>Here is right</RightPageLayout>
+    <RightPageLayout>
+      <BookInformation
+        title={'Book Title'}
+        description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit'}
+        category={'Epic'}
+        year={1970}
+        numberOfPages={845}
+        publisher={'Tolkien'}
+        isbn10={'123'}
+        isbn13={'345'}
+      ></BookInformation>
+    </RightPageLayout>
   </ProductPageLayout>
 )
 

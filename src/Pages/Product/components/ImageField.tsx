@@ -3,10 +3,17 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const ImageWrapper = styled('div')({
-  height: '200px',
-  width: '100px',
-  backgroundColor: '#F7F8F9',
-  border: '1px  double ',
+  height: '300px',
+  width: '200px',
+  backgroundColor: '#F4F2F2',
+  padding: '1px',
+  display: 'flex',
+  boxSizing: 'border-box',
+})
+const ImageContainer = styled('div')({
+  height: '100%',
+  width: '100%',
+  border: '1px solid white',
 })
 
 const Image = styled('img')({
@@ -21,7 +28,9 @@ interface Props {
 const ImageField = ({imageUrl}: Props): JSX.Element => {
   return (
     <ImageWrapper>
-      <Image src={imageUrl}></Image>
+      <ImageContainer>
+        <Image src={imageUrl}></Image>
+      </ImageContainer>
     </ImageWrapper>
   )
 }
