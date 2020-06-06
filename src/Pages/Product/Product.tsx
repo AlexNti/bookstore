@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 import ImageField from '../../components/ImageField/ImageField'
 import BookInformation from './components/BookInformation'
-import BookMayLike from './components/BooksMayLike'
+import BooksMayLike from './components/BooksMayLike'
 
 const ProductPageLayout = styled('div')({
   display: 'flex',
@@ -53,7 +53,7 @@ const Product = (): JSX.Element => (
         ></BookInformation>
       </RightPageLayout>
     </ProductInformationLayout>
-    <BookMayLike></BookMayLike>
+    <BooksMayLike></BooksMayLike>
   </ProductPageLayout>
 )
 
