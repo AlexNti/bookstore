@@ -6,6 +6,7 @@ import ImageField from '../../../components/ImageField/ImageField'
 const Layout = styled('div')({
   display: 'flex',
   flexDirection: 'column',
+  marginRight: '80px',
 })
 
 const Title = styled('h1')({
@@ -24,9 +25,8 @@ const ProductItemWrapper = styled('div')({
   flexDirection: 'column',
   flex: 1,
   maxWidth: '25%',
-  minWidth: '100px',
   height: '150px',
-  marginRight: '20px',
+  marginRight: '40px',
 })
 
 const ProductTitle = styled('div')({

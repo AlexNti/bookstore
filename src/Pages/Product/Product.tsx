@@ -11,6 +11,7 @@ const ProductPageLayout = styled('div')({
   height: '100%',
   marginTop: '60px',
   marginBottom: '20px',
+  marginLeft: '80px',
 })
 
 const ProductInformationLayout = styled('div')({
@@ -24,7 +25,6 @@ const LeftPageLayout = styled('div')({
   flexDirection: 'column',
   height: '100%',
   flex: 1,
-  alignItems: 'center',
 })
 
 const RightPageLayout = styled('div')({
