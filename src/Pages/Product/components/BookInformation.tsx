@@ -59,7 +59,7 @@ const BookSpecification = styled('p')<ParagraphProps>(
 const BuyButton = styled(BaseButton)(({disabled}) => ({
   border: '1px solid black',
   width: '200px',
-  height: '50px',
+  height: '35px',
   borderRadius: '5px',
   alignSelf: 'center',
   marginTop: '20px',

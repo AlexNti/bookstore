@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import ImageField from './components/ImageField'
+import ImageField from '../../components/ImageField/ImageField'
 import BookInformation from './components/BookInformation'
 
 const ProductPageLayout = styled('div')({
@@ -28,7 +28,7 @@ const RightPageLayout = styled('div')({
 const Product = (): JSX.Element => (
   <ProductPageLayout>
     <LeftPageLayout>
-      <ImageField></ImageField>
+      <ImageField width={250} height={350}></ImageField>
     </LeftPageLayout>
     <RightPageLayout>
       <BookInformation
