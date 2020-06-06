@@ -3,12 +3,13 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const ImageWrapper = styled('div')({
-  height: '300px',
-  width: '200px',
+  height: '350px',
+  width: '250px',
   backgroundColor: '#F4F2F2',
   padding: '1px',
   display: 'flex',
   boxSizing: 'border-box',
+  borderRadius: '5px',
 })
 const ImageContainer = styled('div')({
   height: '100%',
@@ -19,6 +20,7 @@ const ImageContainer = styled('div')({
 const Image = styled('img')({
   height: '100%',
   width: '100%',
+  borderRadius: '5px',
 })
 
 interface Props {
