@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 const HeaderWrapper = styled('div')({
   width: '100%',
-  height: '100px',
+  height: '60px',
   backgroundColor: '#F7F8F9',
   textAlign: 'center',
   border: '1px solid black',
