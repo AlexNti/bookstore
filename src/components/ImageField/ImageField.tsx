@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 //TODO ADD AVATAR
 
 interface ImageWrapperProps extends HTMLAttributes<HTMLDivElement> {
-  width: number
-  height: number
+  width?: string
+  height?: string
 }
 const ImageWrapper = styled('div')<ImageWrapperProps>(
   {
@@ -31,8 +31,8 @@ const Image = styled('img')({
 
 interface Props {
   imageUrl?: string
-  width: number
-  height: number
+  width?: string
+  height?: string
 }
 
 const ImageField = ({imageUrl, width, height}: Props): JSX.Element => {
