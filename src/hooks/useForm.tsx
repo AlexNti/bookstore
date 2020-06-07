@@ -123,6 +123,13 @@ const useForm = (fieldInputDict: FieldInputDict, deps: any[] = []) => {
     return validate(name, state[name].value)
   })
 
+  const areAllFieldsValid = useEventCallback(() => {
+    const allFields = validateField()
+    const allFiedsKeys = Object.keys(allFields)
+    const areFieldsValid = allFiedsKeys.every((fieldKey) => !allFields[fieldKey].error)
+    return areFieldsValid
+  })
+
   const setDirty = useEventCallback((name?: string) => {
     if (!name) {
       Object.keys(state).forEach((name) => setDirty(name))
@@ -139,7 +146,7 @@ const useForm = (fieldInputDict: FieldInputDict, deps: any[] = []) => {
     validate(name, normalizedValue)
   })
 
-  return {setDirtyField: setDirty, onChange, validateField, fields: state}
+  return {setDirtyField: setDirty, onChange, validateField, areAllFieldsValid, fields: state}
 }
 
 export default useForm

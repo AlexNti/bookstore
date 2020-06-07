@@ -37,7 +37,7 @@ const AddProductGrid = styled('div')({
 })
 
 const AddProductForm = (): JSX.Element => {
-  const {fields, onChange, validateField, setDirtyField} = useForm({
+  const {fields, onChange, validateField, setDirtyField, areAllFieldsValid} = useForm({
     title: {
       getDefault: () => '',
       validate: validateTitle,
@@ -85,7 +85,7 @@ const AddProductForm = (): JSX.Element => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setDirtyField()
-    const {title} = validateField()
+    console.log(areAllFieldsValid())
   }
 
   const SubmitButton = styled(BaseButton)(({disabled}) => ({
@@ -111,36 +111,42 @@ const AddProductForm = (): JSX.Element => {
           label='Categories:'
           {...fields.categories}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='description'
           label='Description:'
           {...fields.description}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='authorNames'
           label='Author Name(s):'
           {...fields.authorNames}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='options'
           label='Options:'
           {...fields.options}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='publisher'
           label='Publisher:'
           {...fields.publisher}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='rating'
           label='Rating:'
           {...fields.rating}
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='year'
@@ -148,6 +154,7 @@ const AddProductForm = (): JSX.Element => {
           {...fields.year}
           type='number'
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='pageNumber'
@@ -155,6 +162,7 @@ const AddProductForm = (): JSX.Element => {
           {...fields.pageNumber}
           type='number'
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='isbn10'
@@ -162,6 +170,7 @@ const AddProductForm = (): JSX.Element => {
           {...fields.isbn10}
           type='number'
         ></InputField>
+
         <InputField
           onChange={onChange}
           name='isbn13'
