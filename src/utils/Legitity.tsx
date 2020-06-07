@@ -7,6 +7,11 @@ class Legitity {
     this.error = undefined
   }
 
+  trim() {
+    this.value = this.value && this.value.trim ? this.value.trim() : this.value
+    return this
+  }
+
   max(len: number, msg?: string) {
     if (!this.error && this.value && this.value.length > len) {
       this.error = msg || 'max'

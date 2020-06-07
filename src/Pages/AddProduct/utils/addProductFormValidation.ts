@@ -2,6 +2,7 @@ import Legitity from '../../../utils/Legitity'
 
 const validateTitle = (title: string) => {
   return new Legitity(title)
+    .trim()
     .min(10, 'Minimum character is 10')
     .max(120, 'maximum character 120')
     .required()
@@ -9,6 +10,7 @@ const validateTitle = (title: string) => {
 
 const validateDescription = (description: string) => {
   return new Legitity(description)
+    .trim()
     .matches(/^[A-Z]/, 'first letter must be uppercase')
     .max(500, 'maximum character 500')
     .required()
@@ -16,6 +18,7 @@ const validateDescription = (description: string) => {
 
 const validateCategories = (categories: string) => {
   return new Legitity(categories)
+    .trim()
     .required()
     .custom(
       (categories) => (categories ? categories.split(',').length - 1 < 4 : true),
@@ -25,6 +28,7 @@ const validateCategories = (categories: string) => {
 
 const validateAuthorName = (authorNames: string) => {
   return new Legitity(authorNames)
+    .trim()
     .required()
     .custom(
       (categories) => (categories ? categories.split(',').length - 1 < 3 : true),
@@ -37,6 +41,7 @@ const validateYear = (year: number) => {
 
 const validatePublisher = (publisher: string) => {
   return new Legitity(publisher)
+    .trim()
     .required()
     .max(60, 'Max digits is 60')
     .min(5, 'Minimum digits is 5')
@@ -44,12 +49,14 @@ const validatePublisher = (publisher: string) => {
 
 const validateNumberOfPages = (pageNumber: number) => {
   return new Legitity(pageNumber)
+    .trim()
     .required()
     .custom((pageNumber) => pageNumber <= 9999, 'page number should be less than 9999')
 }
 
 const validateISBN10 = (ISBN: number) => {
   return new Legitity(ISBN)
+    .trim()
     .required()
     .min(10, 'Isbn-10 should be 10 digits')
     .max(10, 'Isbn-10 should be 10 digits')
@@ -57,6 +64,7 @@ const validateISBN10 = (ISBN: number) => {
 
 const validateISBN13 = (ISBN: number) => {
   return new Legitity(ISBN)
+    .trim()
     .required()
     .min(13, 'Isbn-13 should be 13 digits')
     .max(13, 'Isbn-13 should be 13 digits')
