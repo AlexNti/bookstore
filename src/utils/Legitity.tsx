@@ -2,7 +2,7 @@ class Legitity {
   value: any
   error: undefined | string
 
-  constructor(value: string) {
+  constructor(value: any) {
     this.value = value
     this.error = undefined
   }
@@ -24,6 +24,13 @@ class Legitity {
   required(msg?: string) {
     if (!this.error && !this.value) {
       this.error = msg || 'required'
+    }
+    return this
+  }
+
+  matches(regex: RegExp, msg?: string) {
+    if (!this.error && this.value && !regex.test(this.value)) {
+      this.error = msg || 'regex'
     }
     return this
   }

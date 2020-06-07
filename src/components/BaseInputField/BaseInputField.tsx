@@ -9,19 +9,20 @@ const Input = styled('input')({
   color: 'black',
   display: 'block',
   fontSize: 14,
-  lineHeight: '1.375rem',
   margin: 0,
   outline: 0,
-  padding: '.3125rem 1rem .3125rem 0',
+  padding: '2px 5px 2px 0',
   width: '100%',
 })
 
 const ErrorMessage = styled('div')({
-  fontSize: '.8125rem',
-  marginTop: '.5rem',
+  fontSize: '11px',
   color: 'red',
   fontWeight: 600,
   textAlign: 'center',
+  position: 'absolute',
+  bottom: '-14px',
+  right: 0,
 })
 
 interface Props {
