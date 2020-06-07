@@ -15,7 +15,7 @@ export interface Book {
 }
 
 export type State = {
-  filterParam: string | undefined
+  filterParam: string
   books: Book[] | []
 }
 
@@ -24,14 +24,14 @@ type Action<T, P = never> = {
   payload?: P
 }
 
-type filterParamAction = Action<'FILTER_PARAM', {filterParam: string}>
+type filterParamAction = Action<'FILTER_BOOKS', {filterParam: string}>
 type addBookAction = Action<'ADD_BOOK', {book: Book}>
 
 type Actions = filterParamAction | addBookAction
 
 function reducer(state: State, action: Actions) {
   switch (action.type) {
-    case 'FILTER_PARAM':
+    case 'FILTER_BOOKS':
       return {...state, filterParam: action?.payload?.filterParam}
     case 'ADD_BOOK':
       return {...state, books: [...state.books, action?.payload?.book]}

@@ -2,12 +2,13 @@ import React, {HTMLAttributes} from 'react'
 import styled from '@emotion/styled'
 
 import BaseInput from '../../../components/BaseInputField'
+import useEventCallback from '../../../hooks/useEventCallback'
 
 interface Props {
   name: string
   value: string
   placeholder?: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (value: any) => void
 }
 interface FieldBlockProps extends HTMLAttributes<HTMLDivElement> {
   width?: number
@@ -16,6 +17,7 @@ interface FieldBlockProps extends HTMLAttributes<HTMLDivElement> {
 const FieldBlock = styled('div')<FieldBlockProps>(({width}) => ({
   alignItems: 'center',
   borderRadius: 4,
+  border: '1px solid',
   width: `${width ? width + 'px' : '100%'}`,
   display: 'flex',
   height: '40px',
@@ -26,10 +28,14 @@ const FieldBlock = styled('div')<FieldBlockProps>(({width}) => ({
 
 const SearchField = (props: Props): JSX.Element => {
   const {onChange, value, placeholder = '', name} = props
+  const handleChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const {value} = e.target
+    onChange(value)
+  })
   return (
     <React.Fragment>
       <FieldBlock>
-        <BaseInput name={name} onChange={onChange} placeholder={placeholder} value={value} />
+        <BaseInput name={name} onChange={handleChange} placeholder={placeholder} value={value} />
       </FieldBlock>
     </React.Fragment>
   )
