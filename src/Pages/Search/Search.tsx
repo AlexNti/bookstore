@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import useBookStore from '../../hooks/useBookShop'
+import useBookStore from '../../hooks/useBookStore'
+import {State} from '../../utils/BookStoreContext'
 
 const SeachPageLayout = styled('div')({
   display: 'flex',
@@ -14,17 +15,17 @@ const SeachPageLayout = styled('div')({
   alignItems: 'center',
 })
 
-const Search = (): JSX.Element => {
-  const {
-    state: {selectedDatabase, selectedTable},
-    dispatch,
-  } = useBookStore()
-  const filterParam = React.useCallback(
-    (param) => dispatch({type: 'SEARCH_PARAM', payload: {searchParam: param}}),
-    [dispatch]
-  )
+const Search: React.FC = (): JSX.Element => {
+  const {state} = useBookStore()
 
-  ;<SeachPageLayout>Here is search</SeachPageLayout>
+  console.log(state)
+
+  // const filterParam = React.useCallback(
+  //   (param) => dispatch({type: 'SEARCH_PARAM', payload: {searchParam: param}}),
+  //   [dispatch]
+  // )
+
+  return <SeachPageLayout>Hello</SeachPageLayout>
 }
 
 export default Search

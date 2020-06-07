@@ -2,18 +2,18 @@ import React from 'react'
 import {History} from 'history'
 import {Router} from 'react-router-dom'
 import Routes from './routes'
-import {BookShopContextProvider} from './utils/BookShopContext'
+import {BookStoreContextProvider} from './utils/BookStoreContext'
 
 interface AppProps {
   history: History
 }
 const App = ({history}: AppProps): JSX.Element => {
   return (
-    <BookShopContextProvider>
+    <BookStoreContextProvider>
       <Router history={history}>
         <Routes></Routes>
       </Router>
-    </BookShopContextProvider>
+    </BookStoreContextProvider>
   )
 }
 

@@ -27,7 +27,7 @@ const ErrorMessage = styled('div')({
 
 interface Props {
   disabled?: boolean
-  error: string | undefined
+  error?: string | undefined
   name?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   placeholder?: string
