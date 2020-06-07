@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 import InputField from './InputField'
-import ImageField from '../../../components/ImageField'
 import BaseButton from '../../../components/BaseButton'
 import useForm from '../../../hooks/useForm'
 import {
@@ -11,6 +10,10 @@ import {
   validateCategories,
   validateAuthorName,
   validateYear,
+  validateISBN13,
+  validateISBN10,
+  validateNumberOfPages,
+  validatePublisher,
 } from '../utils/addProductFormValidation'
 
 const AddProductFormLayout = styled('form')({
@@ -60,18 +63,22 @@ const AddProductForm = (): JSX.Element => {
     },
     publisher: {
       getDefault: () => '',
+      validate: validatePublisher,
     },
     rating: {
       getDefault: () => '',
     },
     isbn10: {
       getDefault: () => '',
+      validate: validateISBN10,
     },
     pageNumber: {
       getDefault: () => 0,
+      validate: validateNumberOfPages,
     },
     isbn13: {
       getDefault: () => 0,
+      validate: validateISBN13,
     },
   })
 
@@ -97,7 +104,6 @@ const AddProductForm = (): JSX.Element => {
     <AddProductFormLayout onSubmit={onSubmit}>
       <AddProductGrid>
         <InputField onChange={onChange} name='title' label='Title:' {...fields.title}></InputField>
-        <ImageField width={'100%'} height={'100%'}></ImageField>
 
         <InputField
           onChange={onChange}

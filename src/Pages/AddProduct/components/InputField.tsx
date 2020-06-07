@@ -39,7 +39,7 @@ const InputField = (props: Props): JSX.Element => {
   const {dirty, error, onChange, value, placeholder = '', label = '', name, type = 'text'} = props
   return (
     <React.Fragment>
-      <FieldBlock>
+      <FieldBlock error={dirty ? (error as string) : undefined}>
         <Label>{label}</Label>
         <BaseInput
           error={dirty ? (error as string) : undefined}

@@ -34,6 +34,12 @@ class Legitity {
     }
     return this
   }
+  custom(fn: (value: any) => boolean, msg: string) {
+    if (!this.error && !fn(this.value)) {
+      this.error = msg
+    }
+    return this
+  }
 }
 
 export default Legitity
