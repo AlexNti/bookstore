@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 
 import ProductPage from './Pages/Product'
 import AddProductPage from './Pages/AddProduct'
+import SearchPage from './Pages/Search'
 
 const PageLayout: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const PageLayout: React.FC = () => {
       <Switch>
         <Route exact path='/' component={ProductPage} />
         <Route exact path='/addproduct' component={AddProductPage} />
+        <Route exact path='/search' component={SearchPage} />
       </Switch>
     </Layout>
   )
