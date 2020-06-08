@@ -17,9 +17,21 @@ const BooksGrid = () => {
     state: {filterParam, books},
   } = useBookStore()
 
+  const memoizedFilteredBooks = React.useMemo(() => {
+    const filterParamToLowerCase = filterParam.toLocaleLowerCase()
+    return (
+      books?.filter(
+        ({title, isbn, author}) =>
+          title.toLocaleLowerCase().includes(filterParamToLowerCase) ||
+          String(isbn).toLocaleLowerCase().includes(filterParamToLowerCase) ||
+          author.toLocaleLowerCase().includes(filterParamToLowerCase)
+      ) || []
+    )
+  }, [books, filterParam])
+
   return (
     <BookGrid>
-      {books.map(({title, isbn, url}) => (
+      {memoizedFilteredBooks.map(({title, isbn, url}) => (
         <BookGridItem key={isbn} url={url} title={title}></BookGridItem>
       ))}
     </BookGrid>
