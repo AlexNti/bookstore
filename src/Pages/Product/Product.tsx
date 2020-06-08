@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 
 import ImageField from '../../components/ImageField/ImageField'
 import BookInformation from './components/BookInformation'
-import BooksMayLike from './components/BooksMayLike'
 
 import useBookStore from '../../hooks/useBookStore'
 import useRouter from '../../hooks/useRouter'
@@ -77,7 +76,6 @@ const Product = (): JSX.Element => {
           ></BookInformation>
         </RightPageLayout>
       </ProductInformationLayout>
-      <BooksMayLike></BooksMayLike>
     </ProductPageLayout>
   )
 }

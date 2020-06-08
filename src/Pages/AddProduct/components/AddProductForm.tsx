@@ -57,7 +57,7 @@ const AddProductForm = (): JSX.Element => {
       validate: validateAuthorName,
     },
     year: {
-      getDefault: () => 0,
+      getDefault: () => '',
       validate: validateYear,
     },
     options: {
@@ -75,11 +75,11 @@ const AddProductForm = (): JSX.Element => {
       validate: validateISBN10,
     },
     pageNumber: {
-      getDefault: () => 0,
+      getDefault: () => '',
       validate: validateNumberOfPages,
     },
     isbn13: {
-      getDefault: () => 0,
+      getDefault: () => '',
       validate: validateISBN13,
     },
     imageUrl: {
