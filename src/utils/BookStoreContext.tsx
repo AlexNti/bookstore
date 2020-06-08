@@ -7,9 +7,9 @@ export interface Book {
   title: string
   subtitle: string
   author: string
-  published: Date
+  year: number
   publisher: string
-  pages: number
+  pageNumber: number
   description: string
   website: string
   imageUrl?: string
