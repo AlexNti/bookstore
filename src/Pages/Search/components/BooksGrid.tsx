@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 
 import BookGridItem from './BookGridItem'
 import useBookStore from '../../../hooks/useBookStore'
+import useRouter from '../../../hooks/useRouter'
 
 const BookGrid = styled('div')({
   display: 'grid',
@@ -14,7 +15,9 @@ const BookGrid = styled('div')({
 const BooksGrid = () => {
   const {
     state: {filterParam, books},
+    dispatch,
   } = useBookStore()
+  const {history} = useRouter()
 
   const memoizedFilteredBooks = React.useMemo(() => {
     const filterParamToLowerCase = filterParam.toLocaleLowerCase()
@@ -28,10 +31,23 @@ const BooksGrid = () => {
     )
   }, [books, filterParam])
 
+  const handleGridItemClick = React.useCallback(
+    ({isbn}) => {
+      history.push('/product')
+      dispatch({type: 'SELECT_BOOK', payload: {selectedBookISBN: isbn}})
+    },
+    [history, dispatch]
+  )
+
   return (
     <BookGrid>
       {memoizedFilteredBooks.map(({title, isbn, url}) => (
-        <BookGridItem key={isbn} url={url} title={title}></BookGridItem>
+        <BookGridItem
+          onClick={() => handleGridItemClick({isbn})}
+          key={isbn}
+          url={url}
+          title={title}
+        ></BookGridItem>
       ))}
     </BookGrid>
   )
