@@ -12,7 +12,11 @@ export interface Book {
   pages: number
   description: string
   website: string
-  url?: string
+  imageUrl?: string
+  isbn10?: number
+  isbn13?: number
+  categories?: string
+  authorNames?: string
 }
 
 export type State = {

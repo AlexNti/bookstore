@@ -41,23 +41,33 @@ const Product = (): JSX.Element => {
   const {
     state: {selectedBook},
   } = useBookStore()
-  const {title, description, published, pages, publisher, isbn, url} = selectedBook as Book
+  const {
+    title,
+    description,
+    published,
+    pages,
+    publisher,
+    isbn13,
+    isbn10,
+    imageUrl,
+    categories,
+  } = selectedBook as Book
   return (
     <ProductPageLayout>
       <ProductInformationLayout>
         <LeftPageLayout>
-          <ImageField imageUrl={url} width={'250px'} height={'350px'}></ImageField>
+          <ImageField imageUrl={imageUrl} width={'250px'} height={'350px'}></ImageField>
         </LeftPageLayout>
         <RightPageLayout>
           <BookInformation
             title={title}
             description={description}
-            category={'Epic'}
+            category={categories || 'not avaiable category'}
             year={new Date(published).getFullYear()}
             numberOfPages={pages}
             publisher={publisher}
-            isbn10={isbn}
-            isbn13={isbn}
+            isbn10={isbn10}
+            isbn13={isbn13}
           ></BookInformation>
         </RightPageLayout>
       </ProductInformationLayout>
