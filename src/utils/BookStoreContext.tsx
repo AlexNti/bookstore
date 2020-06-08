@@ -18,7 +18,7 @@ export interface Book {
 export type State = {
   filterParam: string
   books: Book[]
-  selectedBookISBN: Book | null
+  selectedBook: Book | null
 }
 
 type Action<T, P = never> = {
@@ -28,7 +28,7 @@ type Action<T, P = never> = {
 
 type filterParamAction = Action<'FILTER_BOOKS', {filterParam: string}>
 type addBookAction = Action<'ADD_BOOK', {book: Book}>
-type selectBookAction = Action<'SELECT_BOOK', {selectedBookISBN: Book}>
+type selectBookAction = Action<'SELECT_BOOK', {selectedBook: Book}>
 
 type Actions = filterParamAction | addBookAction | selectBookAction
 
@@ -39,7 +39,7 @@ function reducer(state: State, action: Actions) {
     case 'ADD_BOOK':
       return {...state, books: [...state.books, action?.payload?.book]}
     case 'SELECT_BOOK':
-      return {...state, selectedBookISBN: action?.payload?.selectedBookISBN}
+      return {...state, selectedBook: action?.payload?.selectedBook}
     default:
       throw new Error()
   }
@@ -49,7 +49,7 @@ export const BookStoreContext = React.createContext<{
   state: State
   dispatch: React.Dispatch<any>
 }>({
-  state: {filterParam: '', books: [], selectedBookISBN: null},
+  state: {filterParam: '', books: [], selectedBook: null},
   dispatch: (action: Actions) => null,
 })
 
@@ -58,7 +58,7 @@ export const BookStoreContextProvider = ({children}: {children: React.ReactNode}
     () => ({
       filterParam: '',
       books: booksMocks,
-      selectedBookISBN: '',
+      selectedBook: '',
     }),
     []
   )
