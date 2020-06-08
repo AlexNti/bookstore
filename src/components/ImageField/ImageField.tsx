@@ -18,28 +18,32 @@ const ImageWrapper = styled('div')<ImageWrapperProps>(
   ({width, height}) => ({width, height})
 )
 const ImageContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
   height: '100%',
   width: '100%',
   border: '1px solid white',
 })
 
 const Image = styled('img')({
-  height: '100%',
+  flex: '1',
+  objectFit: 'cover',
   width: '100%',
-  borderRadius: '5px',
 })
 
 interface Props {
   imageUrl?: string
   width?: string
   height?: string
+  children?: React.ReactNode
 }
 
-const ImageField = ({imageUrl, width, height}: Props): JSX.Element => {
+const ImageField = ({imageUrl, width, height, children}: Props): JSX.Element => {
   return (
     <ImageWrapper width={width} height={height}>
       <ImageContainer>
         <Image src={imageUrl}></Image>
+        {children}
       </ImageContainer>
     </ImageWrapper>
   )

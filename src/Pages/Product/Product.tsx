@@ -5,6 +5,9 @@ import ImageField from '../../components/ImageField/ImageField'
 import BookInformation from './components/BookInformation'
 import BooksMayLike from './components/BooksMayLike'
 
+import useBookStore from '../../hooks/useBookStore'
+import {Book} from '../../utils/BookStoreContext'
+
 const ProductPageLayout = styled('div')({
   display: 'flex',
   flexDirection: 'column',
@@ -34,27 +37,33 @@ const RightPageLayout = styled('div')({
   flex: 1,
 })
 
-const Product = (): JSX.Element => (
-  <ProductPageLayout>
-    <ProductInformationLayout>
-      <LeftPageLayout>
-        <ImageField width={'250px'} height={'350px'}></ImageField>
-      </LeftPageLayout>
-      <RightPageLayout>
-        <BookInformation
-          title={'Book Title'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit'}
-          category={'Epic'}
-          year={1970}
-          numberOfPages={845}
-          publisher={'Tolkien'}
-          isbn10={'123'}
-          isbn13={'345'}
-        ></BookInformation>
-      </RightPageLayout>
-    </ProductInformationLayout>
-    <BooksMayLike></BooksMayLike>
-  </ProductPageLayout>
-)
+const Product = (): JSX.Element => {
+  const {
+    state: {selectedBook},
+  } = useBookStore()
+  const {title, description, published, pages, publisher, isbn, url} = selectedBook as Book
+  return (
+    <ProductPageLayout>
+      <ProductInformationLayout>
+        <LeftPageLayout>
+          <ImageField imageUrl={url} width={'250px'} height={'350px'}></ImageField>
+        </LeftPageLayout>
+        <RightPageLayout>
+          <BookInformation
+            title={title}
+            description={description}
+            category={'Epic'}
+            year={new Date(published).getFullYear()}
+            numberOfPages={pages}
+            publisher={publisher}
+            isbn10={isbn}
+            isbn13={isbn}
+          ></BookInformation>
+        </RightPageLayout>
+      </ProductInformationLayout>
+      <BooksMayLike></BooksMayLike>
+    </ProductPageLayout>
+  )
+}
 
 export default Product

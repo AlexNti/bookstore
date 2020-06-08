@@ -2,17 +2,9 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 import {Book} from '../../../utils/BookStoreContext'
-const BookGridWrapper = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: 0,
-})
+import BaseButton from '../../../components/BaseButton'
 
-const BookImage = styled('img')({
-  flex: '1',
-  objectFit: 'cover',
-  width: '100%',
-})
+import ImageField from '../../../components/ImageField'
 
 const BookCaption = styled('figcaption')({
   padding: '1px 2px',
@@ -21,14 +13,15 @@ const BookCaption = styled('figcaption')({
   textAlign: 'right',
 })
 
-type BookGridItemProps = Pick<Book, 'title' | 'url'>
+type BookGridItemProps = Pick<Book, 'title' | 'url'> & {onClick: () => void}
 
-const BookGridItem = ({title, url}: BookGridItemProps): JSX.Element => {
+const BookGridItem = ({title, url, onClick}: BookGridItemProps): JSX.Element => {
   return (
-    <BookGridWrapper>
-      <BookImage src={url}></BookImage>
-      <BookCaption>{title}</BookCaption>
-    </BookGridWrapper>
+    <BaseButton height={'100%'} onClick={onClick}>
+      <ImageField height={'100%'} imageUrl={url}>
+        <BookCaption>{title}</BookCaption>
+      </ImageField>
+    </BaseButton>
   )
 }
 

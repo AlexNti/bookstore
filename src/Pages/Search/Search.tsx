@@ -13,7 +13,8 @@ const SeachPageLayout = styled('div')({
   marginLeft: '80px',
   marginRight: '80px',
   alignItems: 'center',
-  flex: 1,
+  height: '100%',
+  overflow: 'scroll',
 })
 
 const Search: React.FC = (): JSX.Element => {
