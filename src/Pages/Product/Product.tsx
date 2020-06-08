@@ -6,6 +6,8 @@ import BookInformation from './components/BookInformation'
 import BooksMayLike from './components/BooksMayLike'
 
 import useBookStore from '../../hooks/useBookStore'
+import useRouter from '../../hooks/useRouter'
+
 import {Book} from '../../utils/BookStoreContext'
 
 const ProductPageLayout = styled('div')({
@@ -41,11 +43,15 @@ const Product = (): JSX.Element => {
   const {
     state: {selectedBook},
   } = useBookStore()
+  const {history} = useRouter()
+  React.useEffect(() => {
+    if (!selectedBook) history.push('/')
+  }, [selectedBook, history])
   const {
     title,
     description,
-    published,
-    pages,
+    year,
+    pageNumber,
     publisher,
     isbn13,
     isbn10,
@@ -63,8 +69,8 @@ const Product = (): JSX.Element => {
             title={title}
             description={description}
             category={categories || 'not avaiable category'}
-            year={new Date(published).getFullYear()}
-            numberOfPages={pages}
+            year={year}
+            numberOfPages={pageNumber}
             publisher={publisher}
             isbn10={isbn10}
             isbn13={isbn13}
