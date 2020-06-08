@@ -6,10 +6,9 @@ import useBookStore from '../../../hooks/useBookStore'
 
 const BookGrid = styled('div')({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+  gridTemplateColumns: 'repeat(3, minmax(200px, 1fr))',
   gridAutoRows: '1fr',
   gridGap: '10px',
-  gridAutoFlow: 'dense',
 })
 
 const BooksGrid = () => {

@@ -10,9 +10,9 @@ const PageLayout: React.FC = () => {
   return (
     <Layout>
       <Switch>
-        <Route exact path='/' component={ProductPage} />
+        <Route exact path='/product' component={ProductPage} />
         <Route exact path='/addproduct' component={AddProductPage} />
-        <Route exact path='/search' component={SearchPage} />
+        <Route exact path='/' component={SearchPage} />
       </Switch>
     </Layout>
   )
