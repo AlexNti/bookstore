@@ -12,11 +12,12 @@ export interface Book {
   pages: number
   description: string
   website: string
+  url?: string
 }
 
 export type State = {
   filterParam: string
-  books: Book[] | []
+  books: Book[]
 }
 
 type Action<T, P = never> = {
@@ -53,7 +54,7 @@ export const BookStoreContextProvider = ({children}: {children: React.ReactNode}
   const initialState = React.useMemo(
     () => ({
       filterParam: '',
-      books: booksMocks || [],
+      books: booksMocks,
     }),
     []
   )

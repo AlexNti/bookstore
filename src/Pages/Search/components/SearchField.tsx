@@ -21,9 +21,9 @@ const FieldBlock = styled('div')<FieldBlockProps>(({width}) => ({
   width: `${width ? width + 'px' : '100%'}`,
   display: 'flex',
   height: '40px',
-  marginRight: '10px',
   position: 'relative',
   padding: '5px',
+  marginBottom: '10px',
 }))
 
 const SearchField = (props: Props): JSX.Element => {

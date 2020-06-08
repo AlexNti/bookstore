@@ -13,6 +13,7 @@ const SeachPageLayout = styled('div')({
   marginLeft: '80px',
   marginRight: '80px',
   alignItems: 'center',
+  flex: 1,
 })
 
 const Search: React.FC = (): JSX.Element => {

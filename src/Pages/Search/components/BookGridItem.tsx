@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
+import {Book} from '../../../utils/BookStoreContext'
 const BookGridWrapper = styled('div')({
   display: 'flex',
   flexDirection: 'column',
@@ -20,11 +21,13 @@ const BookCaption = styled('figcaption')({
   textAlign: 'right',
 })
 
-const BookGridItem = () => {
+type BookGridItemProps = Pick<Book, 'title' | 'url'>
+
+const BookGridItem = ({title, url}: BookGridItemProps): JSX.Element => {
   return (
     <BookGridWrapper>
-      <BookImage src='https://images-na.ssl-images-amazon.com/images/I/61AZw4wgu2L.jpg'></BookImage>
-      <BookCaption>Mistoborn</BookCaption>
+      <BookImage src={url}></BookImage>
+      <BookCaption>{title}</BookCaption>
     </BookGridWrapper>
   )
 }

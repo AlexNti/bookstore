@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 import BookGridItem from './BookGridItem'
+import useBookStore from '../../../hooks/useBookStore'
 
 const BookGrid = styled('div')({
   display: 'grid',
@@ -11,17 +12,18 @@ const BookGrid = styled('div')({
   gridAutoFlow: 'dense',
 })
 
-const BooksGrid = () => (
-  <BookGrid>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-    <BookGridItem></BookGridItem>
-  </BookGrid>
-)
+const BooksGrid = () => {
+  const {
+    state: {filterParam, books},
+  } = useBookStore()
+
+  return (
+    <BookGrid>
+      {books.map(({title, isbn, url}) => (
+        <BookGridItem key={isbn} url={url} title={title}></BookGridItem>
+      ))}
+    </BookGrid>
+  )
+}
 
 export default BooksGrid
