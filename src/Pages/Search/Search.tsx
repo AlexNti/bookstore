@@ -3,11 +3,11 @@ import styled from '@emotion/styled'
 
 import useBookStore from '../../hooks/useBookStore'
 import SearchFiled from './components/SearchField'
+import BooksGrid from './components/BooksGrid'
 
 const SeachPageLayout = styled('div')({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
   marginTop: '60px',
   marginBottom: '20px',
   marginLeft: '80px',
@@ -17,7 +17,7 @@ const SeachPageLayout = styled('div')({
 
 const Search: React.FC = (): JSX.Element => {
   const {
-    state: {filterParam, books},
+    state: {filterParam},
     dispatch,
   } = useBookStore()
 
@@ -34,6 +34,7 @@ const Search: React.FC = (): JSX.Element => {
         value={filterParam}
         name='searchField'
       ></SearchFiled>
+      <BooksGrid></BooksGrid>
     </SeachPageLayout>
   )
 }
