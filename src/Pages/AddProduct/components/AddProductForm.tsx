@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-
+import useBookStore from '../../../hooks/useBookStore'
 import InputField from './InputField'
 import BaseButton from '../../../components/BaseButton'
 import useForm from '../../../hooks/useForm'
@@ -37,7 +37,9 @@ const AddProductGrid = styled('div')({
 })
 
 const AddProductForm = (): JSX.Element => {
-  const {fields, onChange, validateField, setDirtyField, areAllFieldsValid} = useForm({
+  const {dispatch, state} = useBookStore()
+
+  const {fields, onChange, setDirtyField, areAllFieldsValid} = useForm({
     title: {
       getDefault: () => '',
       validate: validateTitle,
@@ -80,12 +82,50 @@ const AddProductForm = (): JSX.Element => {
       getDefault: () => 0,
       validate: validateISBN13,
     },
+    imageUrl: {
+      getDefault: () => '',
+    },
   })
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setDirtyField()
-    console.log(areAllFieldsValid())
+
+    if (!areAllFieldsValid()) {
+      alert('some field are invalid')
+      return
+    }
+    const {
+      authorNames,
+      year,
+      publisher,
+      isbn10,
+      pageNumber,
+      isbn13,
+      categories,
+      title,
+      description,
+      imageUrl,
+    } = fields
+    dispatch({
+      type: 'ADD_BOOK',
+      payload: {
+        book: {
+          authorNames: authorNames.value,
+          description: description.value,
+          isbn10: isbn10.value,
+          isbn13: isbn13.value,
+          categories: categories.value,
+          title: title.value,
+          year: year.value,
+          pageNumber: pageNumber.value,
+          publisher: publisher.value,
+          imageUrl: imageUrl.value,
+        },
+      },
+    })
+
+    console.log(state)
   }
 
   const SubmitButton = styled(BaseButton)(({disabled}) => ({
@@ -177,6 +217,13 @@ const AddProductForm = (): JSX.Element => {
           label='ISBN-13:'
           {...fields.isbn13}
           type='number'
+        ></InputField>
+
+        <InputField
+          onChange={onChange}
+          name='imageUrl'
+          label='Image Url:'
+          {...fields.imageUrl}
         ></InputField>
       </AddProductGrid>
       <SubmitButton type='submit'>Save</SubmitButton>

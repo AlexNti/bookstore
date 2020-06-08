@@ -15,7 +15,6 @@ const Layout = ({children}: {children: React.ReactNode}): JSX.Element => (
   <LayoutRoot>
     <Header />
     {children}
-    <Header />
   </LayoutRoot>
 )
 

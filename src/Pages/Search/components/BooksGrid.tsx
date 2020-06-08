@@ -25,9 +25,10 @@ const BooksGrid = () => {
     const filterParamToLowerCase = filterParam.toLocaleLowerCase()
     return (
       books?.filter(
-        ({title, isbn, author}) =>
+        ({title, isbn10, isbn13, author}) =>
           title.toLocaleLowerCase().includes(filterParamToLowerCase) ||
-          String(isbn).toLocaleLowerCase().includes(filterParamToLowerCase) ||
+          String(isbn10).toLocaleLowerCase().includes(filterParamToLowerCase) ||
+          String(isbn13).toLocaleLowerCase().includes(filterParamToLowerCase) ||
           author.toLocaleLowerCase().includes(filterParamToLowerCase)
       ) || []
     )
@@ -35,7 +36,6 @@ const BooksGrid = () => {
 
   const handleGridItemClick = React.useCallback(
     (selectedBook: Book) => {
-      console.log(selectedBook)
       history.push('/product')
       dispatch({type: 'SELECT_BOOK', payload: {selectedBook}})
     },
@@ -44,11 +44,11 @@ const BooksGrid = () => {
 
   return (
     <BookGrid>
-      {memoizedFilteredBooks.map(({title, isbn, url}, index) => (
+      {memoizedFilteredBooks.map(({title, isbn10, imageUrl}, index) => (
         <BookGridItem
           onClick={() => handleGridItemClick(memoizedFilteredBooks[index])}
-          key={isbn}
-          url={url}
+          key={isbn10}
+          imageUrl={imageUrl}
           title={title}
         ></BookGridItem>
       ))}

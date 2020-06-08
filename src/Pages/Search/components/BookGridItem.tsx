@@ -13,12 +13,12 @@ const BookCaption = styled('figcaption')({
   textAlign: 'right',
 })
 
-type BookGridItemProps = Pick<Book, 'title' | 'url'> & {onClick: () => void}
+type BookGridItemProps = Pick<Book, 'title' | 'imageUrl'> & {onClick: () => void}
 
-const BookGridItem = ({title, url, onClick}: BookGridItemProps): JSX.Element => {
+const BookGridItem = ({title, imageUrl, onClick}: BookGridItemProps): JSX.Element => {
   return (
     <BaseButton height={'100%'} onClick={onClick}>
-      <ImageField height={'100%'} imageUrl={url}>
+      <ImageField height={'100%'} imageUrl={imageUrl}>
         <BookCaption>{title}</BookCaption>
       </ImageField>
     </BaseButton>

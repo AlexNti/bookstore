@@ -77,8 +77,8 @@ interface BookInformationProps {
   year: number
   numberOfPages: number
   publisher: string
-  isbn10: number
-  isbn13: number
+  isbn10?: number
+  isbn13?: number
   handleClickFavorite?: () => void
   handleClickShare?: () => void
   handleClickBuy?: () => void
