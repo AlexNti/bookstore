@@ -35,13 +35,15 @@ interface Props {
   imageUrl?: string
   width?: string
   height?: string
+  children?: React.ReactNode
 }
 
-const ImageField = ({imageUrl, width, height}: Props): JSX.Element => {
+const ImageField = ({imageUrl, width, height, children}: Props): JSX.Element => {
   return (
     <ImageWrapper width={width} height={height}>
       <ImageContainer>
         <Image src={imageUrl}></Image>
+        {children}
       </ImageContainer>
     </ImageWrapper>
   )
