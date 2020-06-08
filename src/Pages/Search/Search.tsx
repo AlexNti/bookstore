@@ -31,7 +31,7 @@ const Search: React.FC = (): JSX.Element => {
   return (
     <SeachPageLayout>
       <SearchFiled
-        placeholder='...search'
+        placeholder='filter with isbn,title or author}'
         onChange={handleFilterParam}
         value={filterParam}
         name='searchField'

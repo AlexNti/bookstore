@@ -37,7 +37,7 @@ const AddProductGrid = styled('div')({
 })
 
 const AddProductForm = (): JSX.Element => {
-  const {fields, onChange, validateField, setDirtyField, areAllFieldsValid} = useForm({
+  const {fields, onChange, setDirtyField, areAllFieldsValid} = useForm({
     title: {
       getDefault: () => '',
       validate: validateTitle,
