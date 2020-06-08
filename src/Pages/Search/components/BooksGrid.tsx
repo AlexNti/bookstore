@@ -9,7 +9,7 @@ import {Book} from '../../../utils/BookStoreContext'
 
 const BookGrid = styled('div')({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, minmax(200px, 1fr))',
+  gridTemplateColumns: 'repeat(3, minmax(200px, 250px))',
   gridAutoRows: '1fr',
   gridGap: '10px',
 })
